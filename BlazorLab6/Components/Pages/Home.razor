@@ -1,0 +1,25 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<div>
+    <input type="button" value="toast-it" class="btn btn-primary" @onclick="Show" />
+</div>
+
+@code {
+    [Inject]
+    public BlazorLab6.Data.ToasterVM _vm { get; set; }
+
+    public void Show()
+    {
+        _vm.Add(new Data.ToastItem()
+            {
+                Titel = "Toast " + DateTime.Now.Ticks,
+                Text = "Nachricht " + _vm.Toasts.Count().ToString()
+            });
+    }
+}
